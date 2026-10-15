@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Mamaia Nord — Apartament de Lux la 50m de Plajă | iCal Sync & Tur 360°</title>
+  <meta name="description" content="Închiriază în regim hotelier un apartament premium de vacanță în Mamaia Nord. Sincronizare calendar Airbnb/Booking, tur virtual 360°, Ghidul Oaspetelui și self check-in smart.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-content">
+      <a href="#" class="brand-logo">
+        <span class="logo-mark">AURA</span>
+        <span class="logo-sub">Mamaia Nord</span>
+      </a>
+      <div class="nav-links">
+        <a href="#facilitati">Facilități</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#tur360">Tur 360°</a>
+        <a href="#calendar-sync">Disponibilitate & iCal</a>
+        <a href="#guidebook">Ghid Oaspete</a>
+        <a href="#rezervare" class="btn btn-primary nav-cta">Rezervă Sejur</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-backdrop"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">🏖️ La doar 50m de plajă • Mamaia Nord • Strada D25</div>
+      <h1 class="hero-title">
+        Evadarea ta de lux la malul <br>
+        <span class="highlight-text">Mării Negre.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Apartament modern cu 2 camere, terasă generoasă cu vedere panoramică, design scandinav aerisit, parcare subterană inclusă și smart lock self check-in.
+      </p>
+      <div class="hero-actions">
+        <a href="#rezervare" class="btn btn-primary btn-lg">Verifică Disponibilitatea</a>
+        <a href="#tur360" class="btn btn-outline btn-lg">Explorează Tur 360°</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="num">5★</span><span class="lbl">Superhost Airbnb</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="num">50m</span><span class="lbl">Distanță Plajă</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="num">4 pers</span><span class="lbl">Capacitate Max</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="num">100%</span><span class="lbl">Self Check-in</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive 360 Virtual Tour Section -->
+  <section class="section tour-section" id="tur360">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">EXPLOREAZĂ INTERACTIV</span>
+        <h2>Tur Virtual 360° Panoramic</h2>
+        <p>Descoperă fiecare colț al apartamentului Aura ca și cum ai fi deja acolo. Rotește imaginea pe orizontală și comută între camere.</p>
+      </div>
+
+      <div class="tour-viewer-wrapper">
+        <!-- Room Selector Pills -->
+        <div class="tour-room-selector">
+          <button class="tour-room-btn active" data-room="living">🛋️ Living & Dining</button>
+          <button class="tour-room-btn" data-room="bedroom">🛏️ Dormitor Matrimonial</button>
+          <button class="tour-room-btn" data-room="terrace">🌅 Terasă & Apus Mare</button>
+          <button class="tour-room-btn" data-room="kitchen">🍳 Bucătărie Modernă</button>
+        </div>
+
+        <!-- 360 Panoramic Canvas Container -->
+        <div class="tour-panorama-container" id="tourPanoramaBox">
+          <div class="panorama-strip" id="panoramaStrip"></div>
+          
+          <!-- Hotspots Overlay -->
+          <div class="tour-hotspots-layer" id="hotspotsLayer">
+            <div class="tour-hotspot" style="left: 35%; top: 45%;" data-tip="Smart TV 4K 140cm cu Netflix & Disney+">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-label">📺 Smart TV 4K OLED</span>
+            </div>
+            <div class="tour-hotspot" style="left: 65%; top: 38%;" data-tip="Ieșire directă pe terasă cu vedere spre mare">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-label">🌊 Terasă la 50m de Mare</span>
+            </div>
+            <div class="tour-hotspot" style="left: 82%; top: 58%;" data-tip="Canapea extensibilă confortabilă pentru 2 persoane">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-label">🛋️ Canapea Extensibilă</span>
+            </div>
+          </div>
+
+          <!-- Controls HUD -->
+          <div class="tour-controls-hud">
+            <button class="hud-btn" id="btnTourLeft" title="Rotește Stânga">◀</button>
+            <button class="hud-btn" id="btnTourAutoRotate" title="Auto-Rotire Activă">⏸ Pauză Rotire</button>
+            <button class="hud-btn" id="btnTourRight" title="Rotește Dreapta">▶</button>
+            <span class="hud-room-badge" id="hudRoomTitle">Living & Dining</span>
+          </div>
+
+          <div class="tour-drag-hint">👆 Trage cu mouse-ul sau degetul pentru rotire la 360°</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section gallery-section" id="galerie">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">GALERIE FOTO</span>
+        <h2>Spațiul Tău de Relaxare</h2>
+        <p>Design contemporan gândit pentru confort absolut și vacanțe de neuitat.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item large">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80" alt="Living modern Aura Mamaia Nord">
+          <div class="gallery-caption">Living spațios & Dining cu lumină naturală</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef3?auto=format&fit=crop&w=800&q=80" alt="Dormitor matrimonial">
+          <div class="gallery-caption">Dormitor matrimonial cu saltea ortopedică</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Terasă vedere mare">
+          <div class="gallery-caption">Terasă relaxare la apus</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Bucătărie complet utilată">
+          <div class="gallery-caption">Bucătărie utilată & Espressor Nespresso</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Baie modernă walk-in">
+          <div class="gallery-caption">Baie modernă walk-in shower</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Section -->
+  <section class="section amenities-section" id="facilitati">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">DOTĂRI & CONFORT</span>
+        <h2>Tot ce Ai Nevoie Pentru un Sejur Perfect</h2>
+        <p>Fiecare detaliu a fost ales cu grijă pentru a asigura o experiență de top.</p>
+      </div>
+
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <div class="amenity-icon">📶</div>
+          <h3>Wi-Fi 6 Ultra-Rapid</h3>
+          <p>Conexiune stabilă de 1 Gbps, ideală pentru munca de la distanță sau streaming 4K.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🚗</div>
+          <h3>Parcare Subterană Privată</h3>
+          <p>Loc de parcare dedicat și securizat inclus gratuit, ferit de soare și căldură.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🔑</div>
+          <h3>Smart Self Check-in</h3>
+          <p>Acces securizat cu tastatură digitală smart-lock la orice oră din zi sau noapte.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">❄️</div>
+          <h3>Climatizare Inteligentă</h3>
+          <p>Aer condiționat inverter silențios în ambele camere pentru temperatura ideală.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">☕</div>
+          <h3>Espressor & Bucătărie</h3>
+          <p>Plită inducție, frigider mare, mașină de spălat vase și cafea Nespresso de bun venit.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🏖️</div>
+          <h3>Kit de Plajă Inclus</h3>
+          <p>Șezlonguri pliabile, prosoape mari de plajă și umbrelă la dispoziția oaspeților.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two-Way iCal Calendar Sync Section -->
+  <section class="section ical-section" id="calendar-sync">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CALENDAR SINCRONIZAT</span>
+        <h2>Disponibilitate Live & Sincronizare iCal</h2>
+        <p>Calendarul este sincronizat automat în două sensuri cu conturile de Airbnb și Booking.com pentru a preveni suprapunerile de date.</p>
+      </div>
+
+      <div class="ical-container-grid">
+        <!-- Live Calendar View -->
+        <div class="calendar-card">
+          <div class="calendar-header-bar">
+            <button class="cal-nav-btn" id="btnCalPrev">◀</button>
+            <h3 id="calCurrentMonthTitle">Octombrie 2026</h3>
+            <button class="cal-nav-btn" id="btnCalNext">▶</button>
+          </div>
+
+          <div class="calendar-weekdays">
+            <span>Lu</span><span>Ma</span><span>Mi</span><span>Jo</span><span>Vi</span><span>Sâ</span><span>Du</span>
+          </div>
+
+          <div class="calendar-days-grid" id="calendarDaysGrid">
+            <!-- Dynamically populated days -->
+          </div>
+
+          <div class="calendar-legend">
+            <div class="legend-item"><span class="legend-dot dot-avail"></span> Disponibil</div>
+            <div class="legend-item"><span class="legend-dot dot-airbnb"></span> Ocupat Airbnb</div>
+            <div class="legend-item"><span class="legend-dot dot-booking"></span> Ocupat Booking</div>
+            <div class="legend-item"><span class="legend-dot dot-direct"></span> Rezervat Direct</div>
+          </div>
+        </div>
+
+        <!-- Two-Way iCal Sync Control Hub -->
+        <div class="ical-sync-card">
+          <div class="sync-card-header">
+            <span class="ical-badge">SINCRONIZARE AUTOMATĂ ACTIVĂ</span>
+            <h3>Hub Conexiune Canale (OTA)</h3>
+            <p>Conectează platformele terțe folosind protocolul iCalendar RFC 5545.</p>
+          </div>
+
+          <!-- Export Section -->
+          <div class="sync-block">
+            <label class="sync-label">1. Export Calendar Către Airbnb / Booking</label>
+            <div class="sync-input-group">
+              <input type="text" id="icalExportUrl" value="https://auramamaianord.ro/api/ical/feed.ics" readonly>
+              <button class="btn btn-secondary btn-sm" id="btnCopyIcalExport">📋 Copiază</button>
+              <button class="btn btn-outline btn-sm" id="btnDownloadIcsFile">📥 Descarcă .ics</button>
+            </div>
+            <span class="sync-hint">Inserează această legătură în setările de import Airbnb / Booking.com.</span>
+          </div>
+
+          <!-- Import Section -->
+          <div class="sync-block">
+            <label class="sync-label">2. Import Feed iCal din Airbnb & Booking.com</label>
+            <div class="form-group" style="margin-bottom: 8px;">
+              <input type="url" id="airbnbFeedUrl" placeholder="https://www.airbnb.com/calendar/ical/128391823.ics" value="https://www.airbnb.com/calendar/ical/9482104.ics?s=aura-mamaia">
+            </div>
+            <div class="form-group" style="margin-bottom: 12px;">
+              <input type="url" id="bookingFeedUrl" placeholder="https://ical.booking.com/v1/export?t=9481928" value="https://ical.booking.com/v1/export?t=aura-mamaia-d25">
+            </div>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+              <input type="file" id="icalFileInput" accept=".ics,text/calendar" style="display: none;">
+              <button type="button" class="btn btn-outline btn-sm" id="btnUploadIcs" style="flex: 1; font-size: 0.8rem;">
+                📁 Încarcă Fișier .ics Real
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnPasteIcs" style="font-size: 0.8rem;">
+                📝 Lipește Text iCal
+              </button>
+            </div>
+            <button class="btn btn-primary btn-block" id="btnTriggerIcalSync">
+              ⚡ Sincronizează Calendare Acum
+            </button>
+          </div>
+
+          <div class="sync-status-box" id="icalSyncStatusLog">
+            <span class="pulse-green"></span>
+            <span>Ultima sincronizare reușită: <strong>Astăzi, 11 Octombrie 2026</strong> • 6 rezervări active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Price Calculator & Booking Form -->
+  <section class="section booking-section" id="rezervare">
+    <div class="container">
+      <div class="booking-wrapper">
+        <div class="booking-info">
+          <span class="section-tag">REZERVĂ DIRECT</span>
+          <h2>Rezervă Direct, Fără Comisioane de Booking</h2>
+          <p>Economisește până la 20% rezervând direct la proprietar. Confirmare rapidă pe WhatsApp și asistență pe tot parcursul sejurului.</p>
+          <div class="price-highlight">
+            <span class="price-from">de la</span>
+            <span class="price-value" id="basePriceDisplay">450 RON</span>
+            <span class="price-period">/ noapte</span>
+          </div>
+          <ul class="booking-perks">
+            <li>✓ Anulare gratuită cu până la 7 zile înainte</li>
+            <li>✓ Check-in flexibil după ora 15:00 cu tastatură smart</li>
+            <li>✓ Curățenie impecabilă conform standardelor hoteliere</li>
+            <li>✓ Parcare subterană securizată inclusă gratuit</li>
+          </ul>
+        </div>
+
+        <div class="booking-form-card" id="calculator">
+          <h3>Calculează Sejurul Tău</h3>
+          <form id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="checkIn">Data Check-in</label>
+                <input type="date" id="checkIn" required>
+              </div>
+              <div class="form-group">
+                <label for="checkOut">Data Check-out</label>
+                <input type="date" id="checkOut" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="guests">Număr Oaspeți</label>
+              <select id="guests">
+                <option value="2">2 adulți (Recomandat)</option>
+                <option value="3">3 oaspeți</option>
+                <option value="4">4 oaspeți (Max)</option>
+              </select>
+            </div>
+
+            <!-- Price Breakdown Box -->
+            <div class="price-breakdown" id="priceBreakdown">
+              <div class="breakdown-row">
+                <span id="nightsCountLabel">Nopți cazare:</span>
+                <span id="nightsCostValue">0 RON</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Taxă curățenie sejur:</span>
+                <span id="cleaningFeeValue">150 RON</span>
+              </div>
+              <div class="breakdown-total">
+                <span>Total Estimat:</span>
+                <strong id="totalCostValue">0 RON</strong>
+              </div>
+            </div>
+
+            <!-- Booking Alert for Occupied Dates -->
+            <div id="bookingConflictAlert" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #dc2626; padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">
+              ⚠️ Datele selectate se suprapun cu o rezervare existentă Airbnb/Booking. Te rugăm să alegi un alt interval disponibil.
+            </div>
+
+            <div class="form-group">
+              <label for="guestName">Nume Complet</label>
+              <input type="text" id="guestName" placeholder="Ex: Alexandru Popescu" value="Alex Popescu" required>
+            </div>
+
+            <div class="form-group">
+              <label for="guestPhone">Telefon / WhatsApp</label>
+              <input type="tel" id="guestPhone" placeholder="07xx xxx xxx" value="0722 345 678" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="btnSubmitDirectBooking">Trimite Solicitarea pe WhatsApp</button>
+            <p class="form-disclaimer">🔒 Datele tale sunt protejate. Nu se percepe nicio plată în acest moment.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Guest Guidebook Section -->
+  <section class="section guidebook-section" id="guidebook">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CONCIERGE DIGITAL</span>
+        <h2>Ghidul Oaspetelui AURA</h2>
+        <p>Toate informațiile utile pentru sejur la îndemână: coduri de acces, parola Wi-Fi și cele mai bune recomandări locale testate de Alex.</p>
+      </div>
+
+      <div class="guidebook-grid">
+        <!-- Card 1: Smart Check-In -->
+        <div class="guide-card">
+          <div class="guide-icon">🔑</div>
+          <h3>Self Check-in & Acces</h3>
+          <div class="guide-content">
+            <p><strong>Yale Smart Lock:</strong> Tastatura este activă la ușa apartamentului.</p>
+            <div class="guide-code-box">
+              <span>Cod Tastatură Smart:</span>
+              <code>*4829#</code>
+              <button class="btn-copy-code" data-code="*4829#">Copiază</button>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+              🚗 <strong>Parcare Subterană:</strong> Locul #14 la nivelul -1. Bariera se deschide automat prin recunoaștere sau cu cartela din cutia de chei.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Wi-Fi 6 Direct -->
+        <div class="guide-card">
+          <div class="guide-icon">📶</div>
+          <h3>Wi-Fi 6 Gratuit 1 Gbps</h3>
+          <div class="guide-content">
+            <p>Conexiune dedicată de mare viteză pe frecvențele 5GHz și 2.4GHz.</p>
+            <div class="guide-code-box">
+              <span>Nume Rețea:</span>
+              <strong>AURA_GUEST_5G</strong>
+            </div>
+            <div class="guide-code-box" style="margin-top: 6px;">
+              <span>Parolă:</span>
+              <code>MamaiaNord2026!</code>
+              <button class="btn-copy-code" data-code="MamaiaNord2026!">Copiază</button>
+            </div>
+            <button class="btn btn-outline btn-sm btn-block" style="margin-top: 10px;" id="btnShowWifiQr">
+              📲 Arată Cod QR Conectare Directă
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Exclusive Local Recommendations -->
+        <div class="guide-card">
+          <div class="guide-icon">🌊</div>
+          <h3>Recomandări Locale Exclusive</h3>
+          <div class="guide-content">
+            <ul class="guide-recs-list">
+              <li>
+                <strong>🏖️ Beach Cluburi de Top:</strong>
+                <span>Ammos Beach (3 min), Nuba Beach Club (7 min), Kazeboo Watersports.</span>
+              </li>
+              <li>
+                <strong>🍽️ Restaurante Recomandate:</strong>
+                <span>Cherhana Pontica (pește proaspăt), Aleka's Greek Taverna, Taverna Sârbului.</span>
+              </li>
+              <li>
+                <strong>🛒 Cumpărături & Utilități:</strong>
+                <span>Mega Image Non-Stop (200m), Farmacie HelpNet (Str. D24).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 4: House Rules & Contact -->
+        <div class="guide-card">
+          <div class="guide-icon">📜</div>
+          <h3>Regulile Casei & Asistență</h3>
+          <div class="guide-content">
+            <ul class="guide-rules-list">
+              <li>🕒 Check-in: de la 15:00 • Check-out: până la 11:00</li>
+              <li>🚭 Fumatul este permis exclusiv pe terasă (dotată cu scrumieră).</li>
+              <li>🤫 Ore de liniște: 23:00 - 08:00 (complex rezidențial liniștit).</li>
+            </ul>
+            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border);">
+              <span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Ai o întrebare urgentă?</span>
+              <a href="https://wa.me/40700000000?text=Salut%20Alex!%20Sunt%20oaspete%20la%20Aura%20Mamaia%20Nord" target="_blank" class="btn btn-secondary btn-sm btn-block">
+                💬 Scrie-i lui Alex pe WhatsApp 24/7
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="section location-section" id="locatie">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">LOCAȚIE PRIVILEGIATĂ</span>
+        <h2>În Inima Stațiunii Mamaia Nord</h2>
+        <p>Amplasat pe Strada D25, la doar 2 minute de mers pe jos de plajă, Promenadă și cele mai apreciate cluburi și restaurante (Ammos, Nuba, Loft, Aleka's Greek Taverna).</p>
+      </div>
+      <div class="location-box">
+        <div class="location-pin">📍 Strada D25, Mamaia Nord, Constanța • 50m de plajă • Coordonate: 44.3012° N, 28.6189° E</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="logo-mark">AURA</span>
+        <span class="logo-sub">Mamaia Nord</span>
+        <p>Apartament de vacanță exclusivist administrat de Alex.</p>
+      </div>
+      <div class="footer-contact">
+        <p>Rezervări & Info: <strong>+40 700 000 000</strong></p>
+        <p>Email: <strong>contact@auramamaianord.ro</strong></p>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Aura Mamaia Nord. Sincronizat cu Airbnb, Booking.com & iCal. Toate drepturile rezervate.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
